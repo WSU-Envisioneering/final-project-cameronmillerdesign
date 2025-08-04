@@ -1,1 +1,107 @@
-/* Your styles go here */
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #e0e0e0;
+    background: #121212;
+    background-image: linear-gradient(to left, #010122, #000000);
+  }
+  
+  header, nav, main, aside, footer {
+    padding: 1rem;
+  }
+  
+  
+  .container {
+    display: grid;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "aside"
+      "footer";
+    grid-template-columns: 1fr;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  header {
+    grid-area: header;
+    background: #0D47A1;
+    color: white;
+    text-align: center;
+  }
+  
+  nav {
+    grid-area: nav;
+    background: #1f1f1f;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #bbdefb;
+    padding: 0.5rem 1rem;
+    background: #1565C0;
+    border-radius: 5px;
+  }
+  
+  nav a:hover {
+    background: #1E88E5;
+  }
+  
+  main {
+    grid-area: main;
+    background: #1e1e1e;
+    padding: 1rem;
+    border-left: 4px solid #2196F3;
+  }
+  
+  aside {
+    grid-area: aside;
+    background: #1a1a1a;
+    padding: 1rem;
+    border-left: 4px solid #1565C0;
+  }
+  
+  footer {
+    grid-area: footer;
+    background: #0D47A1;
+    color: #bbdefb;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  
+  @media (min-width: 1024px) {
+    .container {
+      grid-template-areas:
+        "header header header"
+        "nav main aside"
+        "footer footer footer";
+      grid-template-columns: 1fr 3fr 1fr;
+    }
+  
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    nav a {
+      width: 100%;
+    }
+  
+    main,
+    aside {
+      padding: 3rem;
+    }
+  }
