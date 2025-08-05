@@ -1,107 +1,164 @@
 /* RESET */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #e0e0e0;
-    background: #121212;
-    background-image: linear-gradient(to left, #010122, #000000);
-  }
-  
-  header, nav, main, aside, footer {
-    padding: 1rem;
-  }
-  
-  
-  .container {
-    display: grid;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #e0e0e0;
+  background: #121212;
+  background-image: linear-gradient(to left, #010122, #000000);
+}
+
+header, nav, main, aside, footer {
+  padding: 1rem;
+}
+
+
+nav {
+  grid-area: nav;
+  background: #1f1f1f;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+nav a {
+  text-decoration: none;
+  color: #bbdefb;
+  padding: 0.5rem 1rem;
+  background: #1565C0;
+  border-radius: 5px;
+  transition:  transform 0.2s;
+}
+nav a:hover {
+  background: #1E88E5;
+  transform: scale(1.05);
+}
+
+
+.container, .container-about, .container-favorites, .container-journey {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "nav"
+    "banner"
+    "main"
+    "aside"
+    "footer";
+  grid-template-columns: 1fr;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 0.5rem;
+}
+
+header {
+  grid-area: header;
+  background: #0D47A1;
+  color: white;
+  text-align: center;
+}
+
+.banner {
+  background: #1565c0;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px #0002;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.banner-btn {
+  background: #fff;
+  color: #1565C0;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:  color 0.3s, transform 0.2s;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+  box-shadow: 0 2px 5px #0001;
+}
+.banner-btn:hover {
+  background: #bbdefb;
+  color: #0D47A1;
+  transform: translateY(-2px) scale(1.04);
+}
+
+main {
+  grid-area: main;
+  background: #1e1e1e;
+  padding: 1rem;
+  border-left: 4px solid #2196F3;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.main-img {
+  width: 50%;
+  max-width: 100px;
+  border-radius: 10px;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px #0005;
+  display: block;
+}
+
+aside {
+  grid-area: aside;
+  background: #1a1a1a;
+  padding: 1rem;
+  border-left: 4px solid #1565C0;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+footer {
+  grid-area: footer;
+  background: #0D47A1;
+  color: #bbdefb;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+
+@media (min-width: 1024px) {
+  .container, .container-about, .container-favorites, .container-journey {
     grid-template-areas:
-      "header"
-      "nav"
-      "main"
-      "aside"
-      "footer";
-    grid-template-columns: 1fr;
-    max-width: 1000px;
-    margin: 0 auto;
+      "header header header"
+      "nav banner banner"
+      "nav main aside"
+      "footer footer footer";
+    grid-template-columns: 200px 3fr 1fr;
   }
-  
-  header {
-    grid-area: header;
-    background: #0D47A1;
-    color: white;
-    text-align: center;
-  }
-  
   nav {
-    grid-area: nav;
-    background: #1f1f1f;
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    min-width: 150px;
+    justify-content: flex-start;
+    gap: 12px;
   }
-  
   nav a {
-    text-decoration: none;
-    color: #bbdefb;
-    padding: 0.5rem 1rem;
-    background: #1565C0;
-    border-radius: 5px;
+    width: 100%;
   }
-  
-  nav a:hover {
-    background: #1E88E5;
-  }
-  
-  main {
-    grid-area: main;
-    background: #1e1e1e;
-    padding: 1rem;
-    border-left: 4px solid #2196F3;
-  }
-  
+  main,
   aside {
-    grid-area: aside;
-    background: #1a1a1a;
-    padding: 1rem;
-    border-left: 4px solid #1565C0;
+    padding: 3rem;
   }
-  
-  footer {
-    grid-area: footer;
-    background: #0D47A1;
-    color: #bbdefb;
-    text-align: center;
-    padding: 2rem;
+  .banner {
+    margin-bottom: 2rem;
+    border-radius: 20px;
   }
-  
-  
-  @media (min-width: 1024px) {
-    .container {
-      grid-template-areas:
-        "header header header"
-        "nav main aside"
-        "footer footer footer";
-      grid-template-columns: 1fr 3fr 1fr;
-    }
-  
-    nav {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    nav a {
-      width: 100%;
-    }
-  
-    main,
-    aside {
-      padding: 3rem;
-    }
-  }
+}
